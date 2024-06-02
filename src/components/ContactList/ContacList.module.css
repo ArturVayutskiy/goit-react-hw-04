@@ -1,0 +1,10 @@
+.results {
+  padding-left: 20px;
+}
+
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 460px;
+}

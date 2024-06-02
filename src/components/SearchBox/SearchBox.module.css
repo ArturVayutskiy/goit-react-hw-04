@@ -1,0 +1,23 @@
+.searchBox {
+  margin: 20px;
+  width: 425px;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchTitle {
+  font-weight: 800;
+}
+
+.searchInput {
+  border-radius: 5px;
+  margin-top: 10px;
+  display: block;
+  width: auto;
+  height: 35px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
+}
