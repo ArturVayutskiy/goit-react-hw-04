@@ -1,0 +1,30 @@
+.description {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: rgb(187, 202, 183);
+  margin-bottom: 10px;
+}
+
+.closeButton {
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 30px;
+  transition: 250ms;
+}
+
+.closeButton:hover {
+  box-shadow: 0px 0px 20px 0px rgba(255, 0, 21, 1);
+}
+
+.modalImage {
+  max-height: 90vh;
+}
+
+.textAndButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
