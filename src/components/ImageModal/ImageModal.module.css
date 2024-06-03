@@ -20,6 +20,7 @@
 
 .modalImage {
   max-height: 90vh;
+  display: block;
 }
 
 .textAndButton {
