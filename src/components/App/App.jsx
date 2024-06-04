@@ -28,9 +28,9 @@ export default function App() {
         setIsLoading(true);
         setError(false);
         const data = await fetchPhotos(query, page);
-        setError(!data.total_pages);
+        setError(null);
         setErrorText("Nothing were found. Please try another word.");
-        setTotalPage(page < data.total_pages);
+        setTotalPage(data.total_pages);
         setPhotos((prevPhotos) => [...prevPhotos, ...data.results]);
       } catch (error) {
         setError(true);
@@ -76,11 +76,7 @@ export default function App() {
       {photos.length > 0 && (
         <ImageGallery photos={photos} onImageClick={handleModalOpen} />
       )}
-      {isLoading && (
-        <p>
-          <Oval />
-        </p>
-      )}
+      {isLoading && <Oval />}
       {photos.length > 0 && totalPages && !isLoading && (
         <LoadMoreBtn onClick={handleMore}>Load more</LoadMoreBtn>
       )}
