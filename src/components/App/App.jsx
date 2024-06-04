@@ -6,6 +6,7 @@ import ImageModal from "../ImageModal/ImageModal";
 import css from "./App.module.css";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import { Oval } from "react-loader-spinner";
 
 export default function App() {
   const [photos, setPhotos] = useState([]);
@@ -75,7 +76,11 @@ export default function App() {
       {photos.length > 0 && (
         <ImageGallery photos={photos} onImageClick={handleModalOpen} />
       )}
-      {isLoading && <p>Loading...</p>}
+      {isLoading && (
+        <p>
+          <Oval />
+        </p>
+      )}
       {photos.length > 0 && totalPages && !isLoading && (
         <LoadMoreBtn onClick={handleMore}>Load more</LoadMoreBtn>
       )}
@@ -83,7 +88,6 @@ export default function App() {
         <ImageModal
           bigUrl={selectedImg}
           isOpen={modalIsOpen}
-          a
           description={description}
           onClose={handleModalClose}
         />
