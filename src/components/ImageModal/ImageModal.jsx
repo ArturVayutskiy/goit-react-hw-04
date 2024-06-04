@@ -1,6 +1,8 @@
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 
+Modal.setAppElement("#root");
+
 export default function ImageModal({ bigUrl, isOpen, description, onClose }) {
   return (
     <Modal
@@ -23,6 +25,7 @@ export default function ImageModal({ bigUrl, isOpen, description, onClose }) {
         },
         modal: {
           backgroundColor: "rgba(0, 0, 0, 0.6)",
+          ariaHideApp: "false",
         },
       }}
     >

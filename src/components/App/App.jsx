@@ -17,7 +17,7 @@ export default function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImg, setSelectedImg] = useState(null);
   const [description, setDescription] = useState("");
-  const [totalPages, setTotalPage] = useState("");
+  const [totalPages, setTotalPages] = useState("");
 
   useEffect(() => {
     if (!query) return;
@@ -31,7 +31,7 @@ export default function App() {
           setError("Nothing was found. Please try another word.");
         } else {
           setPhotos((prevPhotos) => [...prevPhotos, ...data.results]);
-          setTotalPage(data.total_pages);
+          setTotalPages(data.total_pages);
         }
       } catch (error) {
         setError("Something went wrong. Please try again later.");
@@ -47,7 +47,7 @@ export default function App() {
     setQuery(newQuery);
     setPage(1);
     setPhotos([]);
-    setTotalPage(0);
+    setTotalPages(0);
   };
 
   const handleMore = () => {
