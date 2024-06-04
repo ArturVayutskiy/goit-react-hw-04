@@ -77,7 +77,7 @@ export default function App() {
         <ImageGallery photos={photos} onImageClick={handleModalOpen} />
       )}
       {isLoading && <Oval />}
-      {photos.length > 0 && totalPages && !isLoading && (
+      {photos.length > 0 && page < totalPages && !isLoading && (
         <LoadMoreBtn onClick={handleMore}>Load more</LoadMoreBtn>
       )}
       {modalIsOpen && (
