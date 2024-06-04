@@ -5,12 +5,16 @@ export default function ImageCard({ photo, onClick }) {
   const { small, regular } = urls;
 
   return (
-    <li
-      onClick={() => onClick({ big: regular, description: alt_description })}
-      className={css.card}
-    >
+    <li className={css.card}>
       <div className={css.imageWrapper}>
-        <img src={small} alt={alt_description} className={css.image} />
+        <img
+          src={small}
+          alt={alt_description}
+          className={css.image}
+          onClick={() =>
+            onClick({ big: regular, description: alt_description })
+          }
+        />
       </div>
     </li>
   );

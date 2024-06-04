@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import fetchPhotos from "../../unsplash-api";
@@ -26,14 +25,15 @@ export default function App() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        setError(null);
+        setError(false);
         const data = await fetchPhotos(query, page);
         setError(!data.total_pages);
         setErrorText("Nothing were found. Please try another word.");
         setTotalPage(page < data.total_pages);
         setPhotos((prevPhotos) => [...prevPhotos, ...data.results]);
       } catch (error) {
-        toast.error("Something went wrong. Please try again later.");
+        setError(true);
+        setErrorText("Something went wrong. Please try again later.");
       } finally {
         setIsLoading(false);
       }
