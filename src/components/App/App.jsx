@@ -14,7 +14,6 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [errorText, setErrorText] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImg, setSelectedImg] = useState(null);
   const [description, setDescription] = useState("");
@@ -26,15 +25,16 @@ export default function App() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        setError(false);
-        const data = await fetchPhotos(query, page);
         setError(null);
-        setErrorText("Nothing were found. Please try another word.");
-        setTotalPage(data.total_pages);
-        setPhotos((prevPhotos) => [...prevPhotos, ...data.results]);
+        const data = await fetchPhotos(query, page);
+        if (data.total_pages === 0) {
+          setError("Nothing was found. Please try another word.");
+        } else {
+          setPhotos((prevPhotos) => [...prevPhotos, ...data.results]);
+          setTotalPage(data.total_pages);
+        }
       } catch (error) {
-        setError(true);
-        setErrorText("Something went wrong. Please try again later.");
+        setError("Something went wrong. Please try again later.");
       } finally {
         setIsLoading(false);
       }
@@ -47,6 +47,7 @@ export default function App() {
     setQuery(newQuery);
     setPage(1);
     setPhotos([]);
+    setTotalPage(0);
   };
 
   const handleMore = () => {
@@ -69,8 +70,8 @@ export default function App() {
     <div className={css.container}>
       <SearchBar onSearch={handleSearch} />
       {error && (
-        <ErrorMessage message={errorText} className={css.error}>
-          {error}/
+        <ErrorMessage message={error} className={css.error}>
+          {error}
         </ErrorMessage>
       )}
       {photos.length > 0 && (
